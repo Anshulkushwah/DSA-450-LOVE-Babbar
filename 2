@@ -1,0 +1,33 @@
+
+#include <iostream>
+#include <climits>
+using namespace std;
+
+
+void
+MaxiArray (int arr[], int size)
+{
+  int maxi = INT_MIN;
+  for (int i = 0; i < size; i++)
+    {
+      maxi = max (arr[i], maxi);
+
+
+    }
+
+  cout << maxi;
+
+}
+
+int
+main ()
+{
+  int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
+  MaxiArray (arr, 8);
+
+
+
+
+
+return 0;
+}
