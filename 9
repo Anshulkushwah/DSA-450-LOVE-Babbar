@@ -1,0 +1,41 @@
+
+#include <iostream>
+#include <climits>
+#include <bits/stdc++.h>
+using namespace std;
+
+
+void
+revers (int arr[],int n, int size)
+{
+ 
+  int m = size - 1;
+  while (n < m)
+    {
+      swap (arr[ n], arr[m]);
+      n++;
+      m--;
+    }
+}
+
+
+int
+main ()
+{
+  int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+  int n = sizeof (arr) / sizeof (arr[0]);
+  
+  revers (arr,0, n);
+  cout<<"Enter the 'K' number of cycllic rotation  ";
+  int k ;
+  cin>>k;
+  revers(arr,0,k);
+  revers(arr,k,n);
+
+  for (int i = 0; i < n; i++)
+    {
+      cout << arr[i]<<" ";
+    }
+
+  return 0;
+}
