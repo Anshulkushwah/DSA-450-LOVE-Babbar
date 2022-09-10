@@ -1,0 +1,48 @@
+
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+int
+GetMinJump (int arr[], int n)
+{
+
+  int maxi = 0, jump = 0, halt = 0;
+  if (arr[0] == 0)		//agar hmari 1st index pr hi zero hoga to return kr denge
+    {
+      return -1;
+    }
+  for (int i = 0; i < n - 1; i++)	// kya hmare hult ki value last index se jyada hori hai ya nahi
+    {
+      maxi = max (maxi, i + arr[i]);
+      if (maxi >= n - 1)	//kisi bhi time pr maxi last index ko cross krra hoga iska mtlb jump kr lete hai yahi hmara optimal answer hai
+	{
+	  jump = jump + 1;
+	  return jump;
+	}
+      if (i == halt)
+	{
+	  halt = maxi;
+	  jump++;
+	}
+    }
+  if (halt >= n - 1)
+    {
+      return jump;
+    }
+  else
+    {
+      return -1;
+    }
+}
+
+
+
+int
+main ()
+{
+  int arr[] = { 1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9 };
+  int m = sizeof (arr) / sizeof (arr[0]);
+  cout << GetMinJump(arr,m);
+
+  return 0;
+}
