@@ -1,0 +1,113 @@
+video link : https://youtu.be/umhrBhdLkaY
+problem link leetcode : https://leetcode.com/problems/next-permutation/
+
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        
+        if(nums.size()==1){
+            return;
+        }
+        
+        
+        int idx1;
+        for(int i=nums.size()-2;i>=0;i--){
+            if(nums[i]<nums[i+1]){
+                idx1=i;
+                break;
+            }
+        }
+        
+        if(idx1<0){
+            reverse(nums.begin(),nums.end());
+        }else{
+            
+            int idx2=0;
+            for(int i=nums.size()-1;i>=0;i--){
+                if(nums[i]>nums[idx1]){
+                    idx2=i;
+                    break;
+                }
+            }
+        
+            swap(nums[idx1],nums[idx2]);
+            
+            sort(nums.begin()+idx1+1,nums.end());
+            
+            
+        }
+        
+        
+        
+    }
+};
+
+
+
+////////////////////////////////////////
+
+Normal code mai convert krne ki kosis ki pr ho nahi raha
+
+
+
+
+
+#include <iostream>
+#include <climits>
+using namespace std;
+
+void Reverse_Array(int a[], int n, int k)
+{
+    if (k > n)
+    {
+        cout << "Invalid k";
+        return;
+    }
+ 
+    // One by one reverse first and last elements of a[0..k-1]
+    for (int i = 0; i < k/2; i++)
+        swap(a[i], a[k-i-1]);
+}
+
+void nextPermutation(int arr[],int size){
+
+if(size==1){
+    return ;
+}
+
+int idx1;
+for(int i=size-2;i>=0;i--){
+    if(arr[i]<arr[i+1]){
+        idx1=i;
+        break;
+    }}
+    
+if(idx1<0){
+    Reverse_Array(arr,size,0);
+}    
+
+else{
+    int idx2=0;
+    for(int i = size-1 ; i>=0; i--){
+        if(arr[i]>arr[idx1]){
+            idx2=i;
+            break;
+        }
+    }
+    
+   swap(arr[idx1],arr[idx2]);
+   int n= idx1+1;
+   cout<<Reverse_Array(arr,size,n);
+}
+
+}
+
+int main()
+{ int arr[] = {1,2,3};
+  int n = 3;
+  nextPermutation(arr,n);
+    
+
+    return 0;
+}
+
