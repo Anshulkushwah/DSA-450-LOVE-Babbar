@@ -1,0 +1,50 @@
+
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+int
+LConSubSeq (int arr[], int n)
+{
+  int count = 1, maxi = INT_MIN;
+
+  sort (arr, arr + n);
+
+  for (int i = 1; i < n; i++)
+    {
+
+
+      if (arr[i] - arr[i - 1] == 0)
+	{
+	  continue;
+
+	}
+
+      else if (arr[i] - arr[i - 1] == 1)
+	{ int s = ++count;
+	  
+	  maxi = max (maxi, s);
+	  
+	}
+      else
+	count = 1;
+
+
+
+
+
+    }
+
+
+  return maxi;
+}
+
+
+int
+main ()
+{
+  int arr[] = {2,6,1,9,4,5,3};
+  int n = 7;
+   cout<<LConSubSeq (arr, n);
+
+  return 0;
+}
