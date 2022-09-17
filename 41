@@ -1,0 +1,48 @@
+
+#include <iostream>
+
+using namespace std;
+
+int
+main ()
+{
+  int r = 4, c = 4;
+  int matrix[r][c] =
+    { {1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16} };
+
+  int total = r * c;
+  int start_row = 0, end_row = r - 1, start_col = 0, end_col = c - 1;
+
+
+  while (total--)
+    {
+// starting row
+      for (int i = start_col; i <= end_col; i++)
+	{
+	  cout << matrix[start_row][i] << " ";
+	}
+      start_row++;
+//last column
+      for (int i = start_row; i <= end_row; i++)
+	{
+	  cout << matrix[i][end_col] << " ";
+	}
+      end_col--;
+//last row
+      for (int i = end_col; i >= start_col; i--)
+	{
+	  cout << matrix[end_row][i] << " ";
+	}
+      end_row--;
+      //starting row
+      for (int i = end_row; i >= start_row; i--)
+	{
+	  cout << matrix[i][start_col] << " ";
+	}
+
+      start_col++;
+
+    }
+
+  return 0;
+}
