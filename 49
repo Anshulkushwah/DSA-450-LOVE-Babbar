@@ -1,0 +1,58 @@
+
+#include <iostream>
+
+using namespace std;
+
+int
+kthSmallest (int matrix[3][3], int k)
+{
+  int r = 3;
+  int c = 3;
+  int startVal = matrix[0][0];
+  int endVal = matrix[r - 1][c - 1];
+  int midVal;
+  while (startVal <= endVal)
+    {
+
+      midVal = (startVal + endVal) / 2;
+      //row wise traversing the matrix
+      int ans = 0;
+      for (int i = 0; i < r; i++)
+	{
+
+	  // Applying binary search on each row 
+	  int low = 0, high = c - 1, mid;
+	  while (low <= high)
+	    {
+	      mid = low + (high - low) / 2;
+	      if (matrix[i][mid] <= midVal)
+		low = mid + 1;
+	      else
+		high = mid - 1;
+	    }
+	  ans += low;
+
+
+	}
+      if (ans < k)
+	startVal = midVal + 1;
+      else
+	endVal = midVal - 1;
+
+    }
+  return startVal;
+
+
+
+
+}
+
+int
+main ()
+{
+  int matrix[3][3] = { {1, 5, 9}, {10, 11, 13}, {12, 13, 15} };
+  int k = 8;
+  cout << kthSmallest (matrix, k);
+
+  return 0;
+}
