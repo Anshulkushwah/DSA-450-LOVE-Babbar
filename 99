@@ -1,0 +1,58 @@
+
+#include <iostream>
+
+using namespace std;
+
+
+int
+Fixed_point (int arr[], int size)
+
+{
+
+  int start = 0, end = size - 1;
+  int mid = start + (end - start) / 2;
+  int ans = -1;
+  
+  while (start <= end)
+    {
+
+
+      if (arr[mid] == mid)
+	{ ans = mid;
+	  return ans;
+	  
+	 
+	  
+	}
+
+      else if (arr[mid] > mid)
+	{ 
+	  end = mid - 1;
+	 
+	}
+
+      else
+
+	{
+	  start = mid + 1;
+	  
+	}
+	
+	mid = start + (end - start) / 2;
+
+    }
+  return ans;
+
+
+}
+
+int
+main ()
+{
+  int arr[] = {-10, -5, 3, 4, 7, 9};
+  int size = sizeof (arr) / sizeof (arr[0]);
+  cout <<"Fixed point  "<< Fixed_point (arr, size)<< endl;
+  
+  return 0;
+}
+
