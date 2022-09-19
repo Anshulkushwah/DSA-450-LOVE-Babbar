@@ -1,0 +1,111 @@
+
+#include <iostream>
+
+using namespace std;
+
+
+bool
+Col_binarySearch (int arr[][3], int n, int m, int row, int target)
+{
+  int start = 0;
+  int end = m - 1;
+
+  int mid = start + (end - start) / 2;
+
+  while (start <= end)
+    {
+
+      if (arr[row][mid] == target)
+	{
+	  cout << row << " "<<mid << endl;
+	  return true;
+	}
+
+      if (arr[row][mid] < target)
+	{
+	  start = mid + 1;
+
+	}
+
+      else
+	{
+	  end = mid - 1;
+	}
+      mid = start + (end - start) / 2;
+    }
+
+  return false;
+}
+
+bool Search_element (int arr[][3], int n, int m, int target)
+{
+  int start = 0;
+  int end = n - 1;
+
+  int mid = start + (end - start) / 2;
+
+  while (start <= end)
+    {
+
+      // check starting element of row 
+
+      if (arr[mid][0] == target)
+	{
+	  cout << mid << " " << 0 << endl;
+	  return true;
+	}
+
+      //check ending element of row 
+      if (arr[mid][m - 1] == target)
+	{
+	  cout << mid << " " << m - 1 << endl;
+	  return true;
+	}
+
+      // check if element is present in between starting & ending element 
+      if (target > arr[mid][0] && target<arr[mid][m - 1])
+	{
+
+	  //apply binary search on column
+	  bool ans = Col_binarySearch (arr, n, m, mid,target);
+	  return ans;
+	}
+
+      // Check upper part
+      if (target < arr[mid][0])
+	end = mid - 1;
+
+      // Check lower part 
+      if (target > arr[mid][m - 1])
+	start = mid + 1;
+
+      mid = start + (end - start) / 2;
+
+
+    }
+
+  return false;
+
+
+}
+
+
+int main ()
+{
+  int arr[3][3] ={
+    {
+    3, 30, 38},
+    {
+    44, 52, 54},
+    {
+  57, 60, 69}};
+  
+
+  int target=60, n = 3, m = 3;
+
+  cout << Search_element (arr, n, m, target);
+
+
+
+  return 0;
+}
