@@ -1,0 +1,39 @@
+
+#include <iostream>
+
+using namespace std;
+
+int findLength(char str[]){
+    int length = 0;
+    int index = 0;
+    while(str[index] != '\0'){
+        length++;
+        index++;
+    }
+    
+    return length;
+}
+
+void reversString(char str[]){
+    
+
+    int length = findLength(str);
+    
+    int j = length-1;
+    
+    
+    for( int i = 0; i<length/2; i++){
+        swap(str[i],str[j]);
+        
+        j--;
+    }
+}
+
+int main()
+{
+    char name[]={"Anshul"};
+    reversString(name);
+    cout<<name;
+    return 0;
+}
+
