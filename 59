@@ -1,0 +1,58 @@
+
+#include <iostream>
+
+using namespace std;
+
+string
+counAndSay (int n)
+{
+
+  if (n == 1)
+    return "1";
+    
+  if (n == 2)
+    return "11";
+    
+  string s = "11";
+
+  for (int i = 3; i <= n; i++)
+    {
+      string temp = "";
+      s = s + "&";
+      //cout<<"restart s = "<<s<<endl;
+      int count = 1;
+      
+
+      for (int j = 1; j < s.length (); j++)
+	{ 
+	    
+	  if (s[j] != s[j - 1])
+	    {// cout<<" j= "<<j<<" j-1=  " << j-1<<endl;
+	     // cout<<temp<<endl;
+	      temp = temp + to_string (count);	//to_string means any type of data convert into string
+	     // cout<<temp<<endl;
+	      temp = temp + s[j - 1];
+	     // cout<<temp<<endl;
+	      count = 1;
+	    }
+	    
+	  else
+	    count++;
+	    
+	}
+      s = temp;
+      
+    }
+  return s;
+}
+
+int
+main ()
+{
+  cout << "Enter a number ";
+  int n;
+  cin >> n;
+  cout<< counAndSay (n);
+
+  return 0;
+}
