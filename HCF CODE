@@ -1,0 +1,25 @@
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int a,b;
+   cout<< "Please enter two number : ";
+   cin>>a>>b;
+   
+   if(a==0) cout<<b;
+   else if(b==0) cout<<a;
+   
+   while(a!=b){
+       
+       if(a>b) a = a-b;
+       else 
+       b=b-a;
+   }
+   
+   cout<<"HCF(Gretest Common Divisiver)  : "<<a;
+
+    return 0;
+}
