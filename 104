@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void
+printTwoElements (int arr[], int size)
+{
+  int i;
+
+
+  for (i = 0; i < size; i++)
+    {
+      if (arr[abs (arr[i]) - 1] > 0)
+	{
+	  //cout << "condition " << arr[abs (arr[i]) - 1] <<" = "<< abs (arr[i]) -1 <<" = "<< abs (arr[i]) << endl;
+
+	  arr[abs (arr[i]) - 1] = -arr[abs (arr[i]) - 1];
+	}
+
+      else
+//      cout << "The repeating element is " <<arr[abs (arr[i]) - 1]<<"  "<< abs (arr[i]) << "\n";
+
+	cout << "The repeating element is " << abs (arr[i]) << "\n";
+    }
+
+  
+  for (i = 0; i < size; i++)
+  {
+      //cout<<"ignore "<<arr[i]<<endl;
+      if (arr[i] > 0)
+	cout << "and the missing element is "<< (i + 1)<<endl;
+    }
+}
+
+/* Driver code */
+int
+main ()
+{
+  int arr[] = { 7, 3, 4, 5, 5, 6, 2 };
+  int n = sizeof (arr) / sizeof (arr[0]);
+  printTwoElements (arr, n);
+}
