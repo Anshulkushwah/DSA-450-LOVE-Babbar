@@ -1,0 +1,42 @@
+
+#include <iostream>
+
+using namespace std;
+
+
+
+int
+main ()
+{
+  int arr[] = {20, 40, 50, 70, 70, 60};
+  int size = 6;
+  int k = 20;
+  int x = 60;
+  ///////////
+  int ans = -1;
+  int i = 0;
+  
+  
+  
+
+  while (i < size)
+    {
+
+      if (arr[i] == x)
+	{
+	  ans = i;
+	  break;
+	}
+   int temp = abs (arr[i] - x) / k;
+   
+  // cout<<"Temp "<< temp << endl;
+  
+      i = i + max (1, abs (temp));
+      
+   //   cout<<"i = "<<i<<endl;
+
+    }
+
+  cout << ans;
+  return 0;
+}
