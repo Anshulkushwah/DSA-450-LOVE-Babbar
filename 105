@@ -1,0 +1,71 @@
+
+#include <iostream>
+
+using namespace std;
+
+int
+checkAns (int arr[], int ansIndex, int size)
+{
+
+  int totalcount = 0;
+
+  for (int i = 0; i < size; i++)
+    {
+      if (arr[ansIndex] == arr[i])
+	{
+	  totalcount++;
+	}
+    }
+
+  if (totalcount > size / 2)
+    {
+      return arr[ansIndex];
+    }
+
+return -1;
+
+}
+
+
+int
+majorityElement (int arr[], int size)
+{
+
+  int ansIndex = 0;
+  int count = 0;
+
+  for (int i = 0; i < size; i++)
+    {
+      if (arr[i] == arr[ansIndex])
+	{
+	  count++;
+	}
+
+      else
+	{
+	  count--;
+	}
+
+      if (count == 0)
+	{ 
+	    
+	  ansIndex = i;
+	  
+	  count = 1;
+	}
+
+    }
+
+  return checkAns (arr, ansIndex, size);
+
+}
+
+int
+main ()
+{
+  int arr[] = {3, 3, 4, 2, 4, 4, 2, 4, 4};
+  int size = 9;
+  cout << majorityElement(arr, size);
+
+  return 0;
+}
