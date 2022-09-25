@@ -1,0 +1,44 @@
+#include <iostream>
+
+using namespace std;
+
+int 
+PivotElement (int arr[], int size)
+{
+    
+    
+  int start = 0, end = size - 1;
+  
+  
+  
+  while (start < end)
+    {
+      int mid = start + (end-start)/2;
+      
+      if(arr[mid] >= arr[0])
+	{
+	  start=mid+1;
+	}
+
+      else
+	end = mid ;
+    }
+    
+    return end;
+}
+
+
+
+  int main ()
+  {
+    int arr[] = { 3,8,10,17,1};
+    
+    int size = sizeof (arr) / sizeof (arr[0]);
+    
+   
+
+   cout<< "Pivot index is " << PivotElement (arr, size);
+
+    return 0;
+  }
+
