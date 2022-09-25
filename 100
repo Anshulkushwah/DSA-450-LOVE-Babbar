@@ -1,0 +1,89 @@
+#include <iostream>
+
+using namespace std;
+
+int
+getPivot (int arr[], int size)
+{
+
+
+  int start = 0, end = size - 1;
+
+
+
+  while (start < end)
+    {
+      int mid = start + (end - start) / 2;
+
+      if (arr[mid] >= arr[0])
+	{
+	  start = mid + 1;
+	}
+
+      else
+	end = mid;
+    }
+
+  return end;
+}
+
+
+int
+binarySearch (int arr[], int start, int end, int target)
+{
+ // cout << start << "  " << end << "  " << target << endl;
+
+  while (start < end)
+    {
+      int mid = start + (end - start) / 2;
+
+      if (target == arr[mid])
+	{
+	  return mid;
+	}
+
+      else if (target < arr[mid])
+	{
+	  end = mid - 1;
+	}
+
+      else
+	start = mid + 1;
+    }
+
+  return -1;
+}
+
+int
+SearchElement (int arr[], int size, int target)
+{
+  int Pivot = getPivot (arr, size);
+  Pivot++;			// Because pivot consider as a size for binarysearch
+
+ // cout << " pivot " << Pivot << endl;
+
+  if (target >= arr[Pivot] and target <= arr[size - 1])
+    {
+      return binarySearch (arr, Pivot, size - 1, target);
+    }
+
+
+
+  else
+    return binarySearch (arr, 0, Pivot - 1, target);
+}
+
+int
+main ()
+{
+  int arr[] = { 3, 8, 10, 17, 1 };
+  int target = 17;
+
+  int size = sizeof (arr) / sizeof (arr[0]);
+
+ // cout << "starting Pivot " << getPivot (arr, size) << endl;
+
+  cout << "Pivot index is " << SearchElement (arr, size, target);
+
+  return 0;
+}
